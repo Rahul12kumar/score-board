@@ -8,7 +8,6 @@ public class MatchController {
         return !ballType.equals(BallType.NO_BALL) && !ballType.equals(BallType.WIDE);
     }
 
-
     public boolean processBallAndValidateInnings(Ball ball, Match match) {
         Innings currentInnings = match.getInnings();
         Team currentTeam = currentInnings.getBattingTeam();
