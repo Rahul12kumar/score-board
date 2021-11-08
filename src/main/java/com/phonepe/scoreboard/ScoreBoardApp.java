@@ -72,6 +72,10 @@ public class ScoreBoardApp {
                 try {
                     String ballType = sc.next();
                     Ball ball = new Ball(ballType);
+                    if(ball.getBallType().equals(BallType.RUN_OUT)){
+                        short runsMade = Short.parseShort(sc.next());
+                        ball.setRunsMade(runsMade);
+                    }
                     if(matchController.isValidBall(ball.getBallType()))
                         overBowlNumber++;
                     match.getOver()[i].addBalls(ball);
@@ -92,3 +96,4 @@ public class ScoreBoardApp {
         }
     }
 }
+

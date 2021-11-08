@@ -5,4 +5,5 @@ public enum BallType {
     WIDE,
     NO_BALL,
     NORMAL,
+    RUN_OUT,
 }

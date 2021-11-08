@@ -32,6 +32,24 @@ public class MatchController {
                 currentTeam.setTotalScore(currentTeam.getTotalScore()+1);
                 currentTeam.incrementExtras();
                 break;
+            case "RUN_OUT":
+                battingRecord.incrementBall();
+                currentTeam.setWicketsFallen(currentTeam.getWicketsFallen()+1);
+                currentTeam.incrementNumberOfBallsPlayed(); //Number of overs
+                currentTeam.setTotalScore(currentTeam.getTotalScore()+score);
+                battingRecord.updateStat(score,score==4,score==6);
+                if(currentTeam.getWicketsFallen()+1>=currentTeam.getPlayers().size()) {
+                    currentInnings.setCurrentStrikeBatsman(null);
+                    return false;
+                }
+                if(score%2==0){
+                    currentInnings.setOppositeStrikeBatsman(currentTeam.getPlayers().get(currentTeam.getWicketsFallen()+1));
+                    currentInnings.swipeStrike();
+                }
+                else{
+                    currentInnings.setCurrentStrikeBatsman(currentTeam.getPlayers().get(currentTeam.getWicketsFallen()+1));
+                }
+                break;
             default:
                 currentTeam.setTotalScore(currentTeam.getTotalScore()+score);
                 battingRecord.updateStat(score,score==4,score==6);

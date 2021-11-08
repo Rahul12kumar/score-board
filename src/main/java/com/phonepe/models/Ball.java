@@ -29,6 +29,9 @@ public class Ball {
             case "Wd":
                 this.ballType = BallType.WIDE;
                 break;
+            case "R":
+                this.ballType = BallType.RUN_OUT;
+                break;
             default:
                 try {
                     this.runsMade = Short.parseShort(ballType);
